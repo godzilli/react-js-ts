@@ -1,12 +1,11 @@
+import { ImgHTMLAttributes } from 'react';
 import styles from './Avatar.module.css';
 
-interface AvatarProps {
+interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
     hasBorder?: boolean;
-    src: string;
-    alt?: string;
 }
 
-export function Avatar({ hasBorder = true, src, alt}: AvatarProps) {
+export function Avatar({ hasBorder = true, ...props }: AvatarProps) {
 // const user = { name: "jennifer"} para desestruturar | const {name} = user; ficaria assim desestruturado
 
     return (
@@ -14,8 +13,7 @@ export function Avatar({ hasBorder = true, src, alt}: AvatarProps) {
         className={hasBorder
             ? styles.avatarWithBorder 
             : styles.avatar} 
-            src={src}
-            alt={alt}
+            {...props}
             />
     );
 }
